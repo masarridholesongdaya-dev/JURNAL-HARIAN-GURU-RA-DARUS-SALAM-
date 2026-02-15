@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Jurnal Guru RA Darus Salam</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Fredoka', sans-serif; }
+    
+    @keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes rotate-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes wobble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(255, 193, 7, 0.4); } 50% { box-shadow: 0 0 40px rgba(255, 193, 7, 0.8); } }
+    @keyframes float-up { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-80px); opacity: 0; } }
+    @keyframes rainbow { 0% { color: #FF6B6B; } 25% { color: #FFA500; } 50% { color: #4ECDC4; } 75% { color: #FF1493; } 100% { color: #FF6B6B; } }
+    @keyframes slide-in-bounce { 0% { transform: translateX(-100%) scale(0.8); } 60% { transform: translateX(10px); } 100% { transform: translateX(0) scale(1); } }
+    
+    body { overflow: hidden; }
+    
+    .bounce { animation: bounce-slow 2s ease-in-out infinite; }
+    .wobble { animation: wobble 2s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .rainbow-text { animation: rainbow 3s ease-in-out infinite; }
+    .slide-in { animation: slide-in-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    
+    .sticky-note {
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.15);
+      transform: rotate(-2deg);
+    }
+    
+    .sticky-note:nth-child(2) { transform: rotate(1deg); }
+    .sticky-note:nth-child(3) { transform: rotate(-1.5deg); }
+    
+    .btn-kid {
+      border: 4px solid;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow: 4px 6px 0px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-kid:active {
+      transform: translate(3px, 4px);
+      box-shadow: 1px 2px 0px rgba(0,0,0,0.2);
+    }
+    
+    .btn-kid:hover:not(:active) {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 8px 0px rgba(0,0,0,0.2);
+    }
+    
+    .cloud { 
+      filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.1));
+    }
+    
+    .input-kid {
+      border: 4px solid;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .input-kid:focus {
+      outline: none;
+      transform: scale(1.02);
+      box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.4);
+    }
+    
+    .star-burst {
+      position: relative;
+    }
+    
+    .bubble {
+      border-radius: 50%;
+      box-shadow: inset -2px -2px 5px rgba(0,0,0,0.2), 3px 3px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full m-0 p-0 bg-gradient-to-b from-blue-300 via-pink-200 to-yellow-200"><!-- Floating Clouds Background -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden">
+   <svg class="cloud absolute top-10 left-10 w-32 opacity-70 animate-bounce" viewbox="0 0 100 50"><ellipse cx="50" cy="25" rx="35" ry="20" fill="white" opacity="0.8" /> <ellipse cx="25" cy="30" rx="20" ry="15" fill="white" opacity="0.9" /> <ellipse cx="75" cy="28" rx="22" ry="16" fill="white" opacity="0.85" />
+   </svg>
+   <svg class="cloud absolute top-1/3 right-5 w-40 opacity-60" style="animation: bounce-slow 3s ease-in-out infinite;" viewbox="0 0 100 50"><ellipse cx="50" cy="25" rx="35" ry="20" fill="white" opacity="0.75" /> <ellipse cx="25" cy="30" rx="20" ry="15" fill="white" opacity="0.85" /> <ellipse cx="75" cy="28" rx="22" ry="16" fill="white" opacity="0.8" />
+   </svg>
+   <svg class="cloud absolute bottom-1/4 left-1/4 w-36 opacity-50" style="animation: bounce-slow 4s ease-in-out infinite;" viewbox="0 0 100 50"><ellipse cx="50" cy="25" rx="35" ry="20" fill="white" opacity="0.7" /> <ellipse cx="25" cy="30" rx="20" ry="15" fill="white" opacity="0.8" /> <ellipse cx="75" cy="28" rx="22" ry="16" fill="white" opacity="0.75" />
+   </svg>
+  </div><!-- Main Container -->
+  <div id="app-container" class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10 overflow-auto"><!-- Decorative Stars -->
+   <div class="absolute top-5 left-5 text-4xl star-burst wobble">
+    ⭐
+   </div>
+   <div class="absolute top-10 right-8 text-3xl wobble" style="animation-delay: 0.3s;">
+    ✨
+   </div>
+   <div class="absolute bottom-20 left-8 text-3xl wobble" style="animation-delay: 0.6s;">
+    🌈
+   </div>
+   <div class="absolute bottom-10 right-12 text-4xl wobble" style="animation-delay: 0.9s;">
+    🎨
+   </div><!-- Main Card -->
+   <div class="max-w-xl w-full slide-in"><!-- Welcome Section -->
+    <div class="text-center mb-8"><!-- Cute Character -->
+     <div class="inline-block mb-4 bounce">
+      <div class="text-8xl filter drop-shadow-lg">
+       🎓
+      </div>
+     </div><!-- Title with Rainbow Colors -->
+     <h1 id="school-name" class="text-4xl md:text-5xl font-black mb-2 rainbow-text">RA DARUS SALAM</h1><!-- Subtitle -->
+     <div class="flex items-center justify-center gap-3 mb-6"><span class="text-2xl">🌟</span>
+      <p id="welcome-text" class="text-xl font-bold text-orange-600">Jurnal Harian Guru</p><span class="text-2xl">🌟</span>
+     </div><!-- Decorative Line of Stickers -->
+     <div class="flex justify-center gap-3 mb-6"><span class="text-2xl">🎈</span> <span class="text-2xl">🎪</span> <span class="text-2xl">🎨</span> <span class="text-2xl">🎭</span> <span class="text-2xl">🎪</span> <span class="text-2xl">🎈</span>
+     </div>
+    </div><!-- Login Card with Colorful Border -->
+    <div class="bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 p-8 rounded-3xl sticky-note mb-6 border-4 border-white"><!-- Inner Content -->
+     <div class="bg-white rounded-2xl p-6 border-4 border-yellow-400"><!-- Fun Instruction -->
+      <div class="text-center mb-6">
+       <p class="text-lg font-bold text-purple-600 mb-2">👇 Ketikkan nama mu! 👇</p>
+       <p class="text-sm text-orange-600 font-semibold">Masuk ke portal jurnal hari ini 📔</p>
+      </div><!-- Login Form -->
+      <form id="login-form" class="space-y-4"><!-- Name Input -->
+       <div>
+        <div class="flex items-center gap-2 mb-3"><span class="text-3xl">👨‍🏫</span> <label for="nama-guru" class="text-lg font-bold text-indigo-700"> Nama Guru: </label>
+        </div><input type="text" id="nama-guru" name="nama-guru" placeholder="Tulis nama lengkapmu..." autocomplete="name" class="w-full px-5 py-4 input-kid border-purple-500 text-gray-700 placeholder-gray-400 bg-purple-50">
+       </div><!-- Error Message -->
+       <div id="error-message" class="hidden bg-red-300 border-4 border-red-500 text-red-800 px-5 py-4 rounded-2xl font-bold flex items-center gap-3"><span class="text-3xl">❌</span> <span id="error-text">Hmm, nama tidak ketemu!</span>
+       </div><!-- Success Message -->
+       <div id="success-message" class="hidden bg-green-300 border-4 border-green-500 text-green-800 px-5 py-4 rounded-2xl font-bold flex items-center gap-3 animate-bounce"><span class="text-3xl">✅</span> <span id="success-text">Yay! Login berhasil! 🎉</span>
+       </div><!-- Submit Button - BIG and COLORFUL --> <button type="submit" id="login-btn" class="btn-kid w-full bg-gradient-to-br from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 border-green-700 text-white text-2xl py-4 px-6 rounded-2xl flex items-center justify-center gap-3 mt-6"> <span class="text-3xl">🚀</span> <span>MASUK!</span> <span class="text-3xl">🌈</span> </button>
+      </form>
+     </div>
+    </div><!-- Registered Teachers - Cute Bubbles -->
+    <div class="text-center mb-6">
+     <p class="text-lg font-bold text-indigo-700 mb-4">👨‍🏫 Guru-Guru Kami 👩‍🏫</p>
+     <div class="grid grid-cols-2 gap-3">
+      <div class="bg-gradient-to-br from-blue-300 to-cyan-300 border-4 border-blue-600 rounded-3xl px-4 py-3 bubble">
+       <p class="font-bold text-blue-900 text-sm">😊 Norkholis Naiem</p>
+      </div>
+      <div class="bg-gradient-to-br from-pink-300 to-rose-300 border-4 border-pink-600 rounded-3xl px-4 py-3 bubble">
+       <p class="font-bold text-pink-900 text-sm">😄 Saniman</p>
+      </div>
+      <div class="bg-gradient-to-br from-purple-300 to-violet-300 border-4 border-purple-600 rounded-3xl px-4 py-3 bubble">
+       <p class="font-bold text-purple-900 text-sm">🤗 Siti N. Khotimah</p>
+      </div>
+      <div class="bg-gradient-to-br from-orange-300 to-amber-300 border-4 border-orange-600 rounded-3xl px-4 py-3 bubble">
+       <p class="font-bold text-orange-900 text-sm">😃 Hasan</p>
+      </div>
+     </div>
+    </div><!-- Footer -->
+    <div class="text-center">
+     <p class="text-lg font-bold text-indigo-700 mb-3">Semangat belajar! 💪✨</p>
+     <div class="flex justify-center gap-4 text-3xl"><span class="bounce" style="animation-delay: 0s;">🎈</span> <span class="bounce" style="animation-delay: 0.2s;">🎨</span> <span class="bounce" style="animation-delay: 0.4s;">🎪</span> <span class="bounce" style="animation-delay: 0.6s;">🎭</span>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const registeredTeachers = [
+      'NORKHOLIS NAIEM',
+      'SANIMAN',
+      'SITI NURUL KHOTIMAH',
+      'HASAN'
+    ];
+    
+    const journalURL = 'https://docs.google.com/forms/d/e/1FAIpQLSeY_KmAE3NkxzORFeiVgtCP4DxWtiApmf09AzZnfK4yaSYL3w/viewform?usp=header';
+    
+    const defaultConfig = {
+      school_name: 'RA DARUS SALAM',
+      welcome_text: 'Jurnal Harian Guru',
+      bg_color_1: '#93C5FD',
+      bg_color_2: '#FBE0D4',
+      bg_color_3: '#FECACA',
+      primary_color: '#22C55E',
+      text_color: '#7C3AED'
+    };
+    
+    const form = document.getElementById('login-form');
+    const namaInput = document.getElementById('nama-guru');
+    const errorMessage = document.getElementById('error-message');
+    const successMessage = document.getElementById('success-message');
+    const loginBtn = document.getElementById('login-btn');
+    const schoolNameEl = document.getElementById('school-name');
+    const welcomeTextEl = document.getElementById('welcome-text');
+    const appContainer = document.getElementById('app-container');
+    
+    function validateTeacher(name) {
+      const normalizedInput = name.trim().toUpperCase();
+      return registeredTeachers.some(teacher => 
+        teacher.toUpperCase() === normalizedInput
+      );
+    }
+    
+    function showError(message) {
+      document.getElementById('error-text').textContent = message;
+      errorMessage.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+      namaInput.style.borderColor = '#DC2626';
+      namaInput.style.backgroundColor = '#FEE2E2';
+      
+      // Shake animation
+      namaInput.style.animation = 'none';
+      setTimeout(() => {
+        namaInput.style.animation = 'shake 0.5s ease-in-out';
+      }, 10);
+    }
+    
+    function showSuccess(teacherName) {
+      document.getElementById('success-text').textContent = `Selamat datang, ${teacherName}! 🎉`;
+      successMessage.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
+      namaInput.style.borderColor = '#16A34A';
+      namaInput.style.backgroundColor = '#DCFCE7';
+    }
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nama = namaInput.value.trim();
+      
+      if (!nama) {
+        showError('Oops! Isi nama dulu ya! 😊');
+        return;
+      }
+      
+      if (validateTeacher(nama)) {
+        const formattedName = nama.split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ');
+        
+        showSuccess(formattedName);
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = `
+          <span class="text-3xl animate-spin">⏳</span>
+          <span>MEMBUKA...</span>
+          <span class="text-3xl">✨</span>
+        `;
+        
+        setTimeout(() => {
+          window.open(journalURL, '_blank', 'noopener,noreferrer');
+          
+          setTimeout(() => {
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = `
+              <span class="text-3xl">🚀</span>
+              <span>MASUK!</span>
+              <span class="text-3xl">🌈</span>
+            `;
+            successMessage.classList.add('hidden');
+            namaInput.value = '';
+            namaInput.style.borderColor = '#A855F7';
+            namaInput.style.backgroundColor = '#F3E8FF';
+          }, 1000);
+        }, 1500);
+      } else {
+        showError('Nama belum terdaftar! Periksa kembali ya! 🤔');
+      }
+    });
+    
+    namaInput.addEventListener('input', function() {
+      if (!errorMessage.classList.contains('hidden')) {
+        errorMessage.classList.add('hidden');
+        namaInput.style.borderColor = '#A855F7';
+        namaInput.style.backgroundColor = '#F3E8FF';
+      }
+    });
+    
+    // SDK Configuration
+    async function onConfigChange(config) {
+      const schoolName = config.school_name || defaultConfig.school_name;
+      const welcomeText = config.welcome_text || defaultConfig.welcome_text;
+      
+      schoolNameEl.textContent = schoolName;
+      welcomeTextEl.textContent = welcomeText;
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => { config.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['school_name', config.school_name || defaultConfig.school_name],
+        ['welcome_text', config.welcome_text || defaultConfig.welcome_text]
+      ]);
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce2bc7cc656b581',t:'MTc3MTEzNjgxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
